@@ -10,7 +10,7 @@ export async function getAllProducts() {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer i3GU9E4UFCiVFfhbcWkd2moiBtWYiQ'
+      'Authorization': `Bearer ${import.meta.env.API_KEY}`
     },
     body: JSON.stringify({
       query: `
