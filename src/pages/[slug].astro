@@ -1,0 +1,29 @@
+---
+import { getAllProducts } from '../data/fetch.js';
+
+export async function getStaticPaths() {
+  const allProducts = await getAllProducts();
+  const routes = allProducts.edges.map(edge => {
+
+    return {
+      params: { slug: edge.node.slug },
+      props: { productDetails: edge.node }
+    };
+  });
+
+  return routes;
+}
+
+const { slug } = Astro.params;
+const { productDetails } = Astro.props;
+---
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>Astro</title>
+	</head>
+	<body>
+		<h1>{productDetails.name} - {slug}</h1>
+	</body>
+</html>

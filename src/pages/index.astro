@@ -1,0 +1,19 @@
+---
+import { getAllProducts } from '../data/fetch.js';
+import ProductList from './product-list.svelte';
+
+
+const allProducts = await getAllProducts();
+
+---
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>Astro</title>
+	</head>
+	<body>
+		<h1>Astro</h1>
+		<ProductList productList={allProducts.edges}></ProductList
+	</body>
+</html>
